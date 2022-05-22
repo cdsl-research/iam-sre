@@ -27,7 +27,8 @@
     <pre id="config" style="border: solid 2px black; min-height: 40px; width: 300px;"></pre>
 
     <script>
-        const username = (document.getElementById('username')).toLowerCase();
+        const username_raw = document.getElementById('username');
+        const username = username_raw.toLowerCase();
         const team = document.getElementById('team');
         let button = document.getElementById('generate');
         const config = document.getElementById('config');
