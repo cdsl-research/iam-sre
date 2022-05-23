@@ -28,13 +28,13 @@
 
     <script>
         const username_raw = document.getElementById('username');
-        const username = username_raw.toLowerCase();
+        const username = username_raw.value.toLowerCase();
         const team = document.getElementById('team');
         let button = document.getElementById('generate');
         const config = document.getElementById('config');
 
         button.addEventListener('click', () => {
-            if( username.value.length != 10 ) {
+            if( username.length != 10 ) {
                 alert("学籍番号+2桁が不正です");
                 return;
             }
@@ -47,18 +47,18 @@
 
             config.textContent = `
 Host sre-gw
-    User ${username.value}
+    User ${username}
     Hostname 10.204.227.154
     IdentityFile ~/.ssh/id_ed25519_sre
 
 Host sre${team_id}h
-    User ${username.value}
+    User ${username}
     Hostname sre${team_id}h.local
     IdentityFile ~/.ssh/id_ed25519_sre
     ProxyJump sre-gw
 
 Host sre${team_id}t
-    User ${username.value}
+    User ${username}
     Hostname sre${team_id}t.local
     IdentityFile ~/.ssh/id_ed25519_sre
     ProxyJump sre-gw
