@@ -27,38 +27,38 @@
     <pre id="config" style="border: solid 2px black; min-height: 40px; width: 300px;"></pre>
 
     <script>
-        const username_raw = document.getElementById('username');
-        const username = username_raw.value.toLowerCase();
+        const username = document.getElementById('username');
         const team = document.getElementById('team');
         let button = document.getElementById('generate');
         const config = document.getElementById('config');
 
         button.addEventListener('click', () => {
-            if( username.length != 10 ) {
+            console.log(username.value.length)
+            if (username.value.length != 10) {
                 alert("学籍番号+2桁が不正です");
                 return;
             }
-            if( team.value > 12 || team.value < 1 ) {
+            if (team.value > 12 || team.value < 1) {
                 alert("チーム番号が不正です")
                 return;
             }
 
-            const team_id = ( '000' + team.value ).slice(-3);
+            const team_id = ('000' + team.value).slice(-3);
 
             config.textContent = `
 Host sre-gw
-    User ${username}
+    User ${username.value}
     Hostname 10.204.227.154
     IdentityFile ~/.ssh/id_ed25519_sre
 
 Host sre${team_id}h
-    User ${username}
+    User ${username.value}
     Hostname sre${team_id}h.local
     IdentityFile ~/.ssh/id_ed25519_sre
     ProxyJump sre-gw
 
 Host sre${team_id}t
-    User ${username}
+    User ${username.value}
     Hostname sre${team_id}t.local
     IdentityFile ~/.ssh/id_ed25519_sre
     ProxyJump sre-gw
