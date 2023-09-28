@@ -66,6 +66,12 @@ Host sre${team_id}t
     IdentityFile ~/.ssh/id_ed25519_sre
     ProxyJump sre-gw
 
+Host sre${team_id}s
+    User ${username}
+    Hostname sre${team_id}s.local
+    IdentityFile ~/.ssh/id_ed25519_sre
+    ProxyJump sre-gw
+
 `;
         });
     </script>
