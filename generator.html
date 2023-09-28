@@ -51,6 +51,8 @@ Host sre-gw
     User ${username}
     Hostname 10.204.227.167
     IdentityFile ~/.ssh/id_ed25519_sre
+    ServerAliveInterval 10
+    ServerAliveCountMax 10
 
 Host sre${team_id}h
     User ${username}
